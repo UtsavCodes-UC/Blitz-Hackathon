@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile | Athletica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="player-profile.css">
+    <style>
+        body {
+            font-family: 'Bebas Neue', Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .profile-container {
+            background-color: rgb(93, 78, 78);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .profile-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e63946;
+        }
+        .profile-container h1, .profile-container h2 {
+            margin: 10px 0;
+        }
+        .profile-container p {
+            margin: 5px 0;
+        }
+        .profile-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img id="profile-pic" src="default-profile.png" alt="Profile Picture">
+        <h1 id="player-name">Name: </h1>
+        <p id="player-email">Email: </p>
+        <p id="player-age">Age: </p>
+        <p id="player-mobile">Mobile: </p>
+        <p id="player-sports">Sports: </p>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const selectedPlayer = JSON.parse(sessionStorage.getItem('selectedPlayer'));
+
+            if (selectedPlayer) {
+                document.getElementById('profile-pic').src = selectedPlayer.profilePic || 'default-profile.png';
+                document.getElementById('player-name').innerText = 'Name: ${selectedPlayer.name}';
+                document.getElementById('player-email').innerText = 'Email: ${selectedPlayer.email}';
+                document.getElementById('player-age').innerText = 'Age: ${selectedPlayer.age}';
+                document.getElementById('player-mobile').innerText = 'Mobile: +${selectedPlayer.countryCode} ${selectedPlayer.mobileNumber}';
+                document.getElementById('player-sports').innerText = 'Sports: ${selectedPlayer.sports.join(', ')}';
+            } else {
+                alert('Player data not found.');
+            }
+        };
+    </script>
+</body>
+</html>

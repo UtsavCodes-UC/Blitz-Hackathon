@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athletica | Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <img src="athletica.png" alt="Athletica Logo" class="logo">
+            <p class="brand-name">ATHLETICA</p>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="profile.html"><img src="user.png" alt="Profile" class="nav-icon"> Profile</a></li>
+                <li><a href="ahome.html"><img src="search.png" alt="Search" class="nav-icon"> Search</a></li>
+                <li><a href="upcoming-tournaments.html"><img src="image.png" alt="Tournaments" class="nav-icon"> Upcoming Tournaments</a></li>
+                <li><a href="chats.html"><img src="chats.png" alt="Chats" class="nav-icon"> Chats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="feed-section">
+        <h1>Welcome to Athletica</h1>
+        <div class="post-feed">
+            <!-- Mock Post 1 -->
+            <div class="post">
+                <div class="post-header">
+                    <img class="profile-pic" src="jot.jpeg" alt="Athlete 1">
+                    <a href="player-profile.html" class="athlete-name">JOT</a>
+                </div>
+                <img class="post-image" src="jot.jpeg" alt="Athlete's Post">
+                <div class="post-footer">
+                    <p class="post-caption">Training hard for the upcoming championship! #Dedication #Athletics</p>
+                    <div class="post-actions">
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                        <button class="share-btn">Share</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mock Post 2 -->
+            <div class="post">
+                <div class="post-header">
+                    <img class="profile-pic" src="deep.jpeg" alt="Athlete 2">
+                    <a href="player-profile.html" class="athlete-name">Deep</a>
+                </div>
+                <video class="post-video" controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="post-footer">
+                    <p class="post-caption">This is how we prep for the big race! #Speed #AthleticLife</p>
+                    <div class="post-actions">
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                        <button class="share-btn">Share</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more mock posts as needed -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Athletica. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
