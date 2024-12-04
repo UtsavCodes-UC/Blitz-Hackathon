@@ -59,11 +59,11 @@
 
             if (selectedPlayer) {
                 document.getElementById('profile-pic').src = selectedPlayer.profilePic || 'default-profile.png';
-                document.getElementById('player-name').innerText = 'Name: ${selectedPlayer.name}';
-                document.getElementById('player-email').innerText = 'Email: ${selectedPlayer.email}';
-                document.getElementById('player-age').innerText = 'Age: ${selectedPlayer.age}';
-                document.getElementById('player-mobile').innerText = 'Mobile: +${selectedPlayer.countryCode} ${selectedPlayer.mobileNumber}';
-                document.getElementById('player-sports').innerText = 'Sports: ${selectedPlayer.sports.join(', ')}';
+                document.getElementById('player-name').innerText = `Name: ${selectedPlayer.name}`;
+                document.getElementById('player-email').innerText = `Email: ${selectedPlayer.email}`;
+                document.getElementById('player-age').innerText = `Age: ${selectedPlayer.age}`;
+                document.getElementById('player-mobile').innerText = `Mobile: +${selectedPlayer.countryCode} ${selectedPlayer.mobileNumber}`;
+                document.getElementById('player-sports').innerText = `Sports: ${selectedPlayer.sports.join(', ')}`;
             } else {
                 alert('Player data not found.');
             }
