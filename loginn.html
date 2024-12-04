@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg'); /* Replace 'background.jpg' with your desired image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      width: 300px;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.7); /* Black translucent background */
+      color: white; /* White text for better visibility */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #e63946;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e63946;
+    }
+
+    .toggle-btn {
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #e63946;
+    }
+
+    .toggle-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 id="form-title">Sign In</h2>
+    </div>
+
+    <div id="sign-in" class="form-section active">
+      <div class="form-group">
+        <label for="sign-in-email">Email:</label>
+        <input type="email" id="sign-in-email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="sign-in-password">Password:</label>
+        <input type="password" id="sign-in-password" placeholder="Enter your password">
+      </div>
+      <a href="games.html"><button class="btn" id="sign-in-btn">Login</button></a>
+    </div>
+
+    <div id="sign-up" class="form-section">
+      <div class="form-group">
+        <label for="sign-up-name">Name:</label>
+        <input type="text" id="sign-up-name" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="sign-up-email">Email:</label>
+        <input type="email" id="sign-up-email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="sign-up-password">Password:</label>
+        <input type="password" id="sign-up-password" placeholder="Enter your password">
+      </div>
+      <button class="btn" id="sign-up-btn">Sign Up</button>
+    </div>
+
+    <div class="toggle-btn" id="toggle-link">
+      Don’t have an account? Sign up
+    </div>
+  </div>
+
+  <script>
+    const toggleLink = document.getElementById('toggle-link');
+    const formTitle = document.getElementById('form-title');
+    const signInForm = document.getElementById('sign-in');
+    const signUpForm = document.getElementById('sign-up');
+
+    toggleLink.addEventListener('click', () => {
+      if (signInForm.classList.contains('active')) {
+        signInForm.classList.remove('active');
+        signUpForm.classList.add('active');
+        formTitle.textContent = 'Sign Up';
+        toggleLink.textContent = 'Already have an account? Sign in';
+      } else {
+        signUpForm.classList.remove('active');
+        signInForm.classList.add('active');
+        formTitle.textContent = 'Sign In';
+        toggleLink.textContent = 'Don’t have an account? Sign up';
+      }
+    });
+  </script>
+</body>
+</html>
