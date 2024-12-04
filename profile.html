@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    /* Existing styling */
+    body {
+      font-family: 'Bebas Neue', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #2d3436;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 100px;
+      cursor: pointer;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      border: 3px solid #e63946;
+      cursor: pointer;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    .profile-details h1, .profile-details p {
+      font-size: 22px;
+    }
+
+    .profile-section {
+      margin-top: 20px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-section h2 {
+      font-size: 24px;
+      color: #e63946;
+      margin-bottom: 10px;
+    }
+
+    .sports-section select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .sports-section button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #e63946;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .sports-section p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .profile-actions button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2d3436;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .profile-actions button:hover {
+      background-color: #e63946;
+    }
+
+    .contact-section {
+      margin-top: 20px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-section input {
+      width: calc(50% - 10px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .contact-section input[type="text"] {
+      width: calc(50% - 10px);
+    }
+
+    .contact-section button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #2d3436;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-section button:hover {
+      background-color: #e63946;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <a href="Ahome.html"><img src="athletica.png" alt="Logo"></a>
+    </div>
+    <a href="profile.html">Profile</a>
+    <a href="homepage.html">Home</a>
+    <a href="Ahome.html">Search</a>
+    <a href="messages.html">Messages</a>
+    <a href="sports.html">Logout</a>
+  </div>
+
+  <div class="content">
+    <div class="profile-header">
+      <img id="profile-pic" src="default-profile.png" alt="Profile Picture" onclick="triggerImageUpload()">
+      <input type="file" id="image-upload" accept="image/*" style="display: none;">
+      <div class="profile-details">
+        <h1>Name: <span id="user-name"></span></h1>
+        <p>Email: <span id="user-email"></span></p>
+        <p>Age: <span id="user-age"></span></p>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h2>Profile Actions</h2>
+      <button id="update-profile">Update Profile</button>
+      <button id="list-player">Add to Players List</button>
+    </div>
+
+    <!-- New contact section -->
+    <div class="profile-section contact-section">
+      <h2>Contact Information</h2>
+      <label for="country-code">Country Code:</label>
+      <input type="text" id="country-code" placeholder="+1" maxlength="4">
+      <label for="mobile-number">Mobile Number:</label>
+      <input type="text" id="mobile-number" placeholder="1234567890" maxlength="15">
+      <button id="update-contact">Update Contact</button>
+    </div>
+
+    <div class="profile-section sports-section" id="sports-section">
+      <h2>Sports</h2>
+      <select id="sports-select" multiple>
+        <option>Soccer</option>
+        <option>Basketball</option>
+        <option>Cricket</option>
+        <option>Tennis</option>
+        <option>Swimming</option>
+        <option>Table Tennis</option>
+        <option>Golf</option>
+        <option>Volleyball</option>
+        <option>Rugby</option>
+        <option>Cycling</option>
+        <option>Hockey</option>
+        <option>Baseball</option>
+        <option>Badminton</option>
+        <option>Boxing</option>
+        <option>Athletics</option>
+        <option>Nothing selected</option>
+      </select>
+      <button id="save-sports">Save Sports</button>
+      <button id="edit-sports" style="display: none;">Edit Sports</button>
+      <p id="selected-sports-display" style="display: none;">Selected Sports: <span id="selected-sports"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const triggerImageUpload = () => {
+      document.getElementById('image-upload').click();
+    };
+
+    document.getElementById('image-upload').addEventListener('change', function(event) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('profile-pic').src = reader.result;
+        sessionStorage.setItem('profilePic', reader.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    });
+
+    document.getElementById('update-profile').addEventListener('click', () => {
+      const userName = document.getElementById('user-name');
+      const userEmail = document.getElementById('user-email');
+      const userAge = document.getElementById('user-age');
+
+      userName.contentEditable = true;
+      userEmail.contentEditable = true;
+      userAge.contentEditable = true;
+
+      userName.style.border = "1px solid #e63946";
+      userEmail.style.border = "1px solid #e63946";
+      userAge.style.border = "1px solid #e63946";
+
+      alert('You can now edit your profile. Click Save to apply changes.');
+    });
+
+    document.getElementById('list-player').addEventListener('click', () => {
+      const name = document.getElementById('user-name').innerText;
+      const email = document.getElementById('user-email').innerText;
+      const age = document.getElementById('user-age').innerText;
+      const profilePic = document.getElementById('profile-pic').src;
+      const mobileNumber = document.getElementById('country-code').value + document.getElementById('mobile-number').value;
+
+      const players = JSON.parse(sessionStorage.getItem('players')) || [];
+      players.push({ name, email, age, profilePic, mobileNumber });
+      sessionStorage.setItem('players', JSON.stringify(players));
+
+      alert(`${name} has been added to the players list.`);
+    });
+
+    document.getElementById('update-contact').addEventListener('click', () => {
+      const countryCode = document.getElementById('country-code').value;
+      const mobileNumber = document.getElementById('mobile-number').value;
+
+      if (countryCode && mobileNumber) {
+        alert('Contact information updated successfully.');
+      } else {
+        alert('Please fill in both the country code and mobile number.');
+      }
+    });
+
+    document.getElementById('save-sports').addEventListener('click', () => {
+      const selectedOptions = Array.from(document.getElementById('sports-select').selectedOptions);
+      const selectedSports = selectedOptions.map(option => option.text).join(', ');
+
+      sessionStorage.setItem('selectedSports', selectedSports);
+      document.getElementById('selected-sports').innerText = selectedSports;
+      document.getElementById('sports-select').style.display = 'none';
+      document.getElementById('save-sports').style.display = 'none';
+      document.getElementById('edit-sports').style.display = 'block';
+      document.getElementById('selected-sports-display').style.display = 'block';
+
+      alert('Sports selection saved successfully!');
+    });
+
+    document.getElementById('edit-sports').addEventListener('click', () => {
+      document.getElementById('sports-select').style.display = 'block';
+      document.getElementById('save-sports').style.display = 'block';
+      document.getElementById('edit-sports').style.display = 'none';
+      document.getElementById('selected-sports-display').style.display = 'none';
+    });
+
+    window.onload = () => {
+      document.getElementById('user-name').innerText = sessionStorage.getItem('userName') || 'John Doe';
+      document.getElementById('user-email').innerText = sessionStorage.getItem('userEmail') || 'johndoe@example.com';
+      document.getElementById('user-age').innerText = sessionStorage.getItem('userAge') || '20';
+      document.getElementById('profile-pic').src = sessionStorage.getItem('profilePic') || 'default-profile.png';
+
+      const savedSports = sessionStorage.getItem('selectedSports');
+      if (savedSports) {
+        document.getElementById('selected-sports').innerText = savedSports;
+        document.getElementById('sports-select').style.display = 'none';
+        document.getElementById('save-sports').style.display = 'none';
+        document.getElementById('edit-sports').style.display = 'block';
+        document.getElementById('selected-sports-display').style.display = 'block';
+      }
+    };
+  </script>
+</body>
+</html>
